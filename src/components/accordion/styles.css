@@ -1,0 +1,33 @@
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #000000;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgb(255, 255, 255);
+}
+
+.accordion {
+  padding-top: 10px;
+  width: 100%;
+  border-radius: 5px;
+}
+
+.question-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    background-color: #598d66;
+    border-bottom: 1px solid #1b0101;
+    cursor: pointer;
+}
+
+.content {
+  padding: 10px;
+  background-color: #598d66;
+  border-top: 1px solid #1b0101;
+}
