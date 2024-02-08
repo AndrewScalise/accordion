@@ -6,20 +6,14 @@ const Accordion = () => {
   const [isMultiSelection, setIsMultiSelection] = useState(false);
   const [selections, setSelections] = useState<number[]>([]);
 
-  const handleSingleSelection = (id: number) => {
-    if (isMultiSelection) {
-      if (selections.includes(id)) {
-        setSelections(selections.filter((selection) => selection !== id));
+  const handleSelection = (id: number) => {
+    setSelections(prevSelections => {
+      if (isMultiSelection) {
+        return prevSelections.includes(id) ? prevSelections.filter(selection => selection !== id) : [...prevSelections, id];
       } else {
-        setSelections([...selections, id]);
+        return prevSelections.includes(id) ? [] : [id];
       }
-    } else {
-      if (selections.includes(id)) {
-        setSelections([]);
-      } else {
-        setSelections([id]);
-      }
-    }
+    });
   };
 
   const handleIsMultiSelection = () => {
@@ -37,7 +31,7 @@ const Accordion = () => {
             <div
               key={dataItem.id}
               className="content"
-              onClick={() => handleSingleSelection(dataItem.id)}
+              onClick={() => handleSelection(dataItem.id)}
             >
               <div className="question-row">
                 <h3>{dataItem.question}</h3>
